@@ -17,7 +17,6 @@ router.post(
     }),
   ],
   async (req, res) => {
-    console.log(req.body);
     try {
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
@@ -43,7 +42,7 @@ router.post(
     } catch (err) {
       res
         .status(500)
-        .json({ message: "Something went wrong, plesae try again" });
+        .json({ message: "Something went wrong, please try again" });
     }
   }
 );
@@ -91,7 +90,7 @@ router.post(
     } catch (err) {
       res
         .status(500)
-        .json({ message: "Something went wrong, plesae try again" });
+        .json({ message: "Something went wrong, please try again" });
     }
   }
 );
