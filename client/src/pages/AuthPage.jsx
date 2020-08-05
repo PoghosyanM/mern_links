@@ -17,6 +17,10 @@ const AuthPage = () => {
     clearError();
   }, [error, message, clearError]);
 
+  useEffect(() => {
+    window.M.updateTextFields();
+  }, []);
+
   const changeHandler = ({ target: { name, value } }) => {
     setForm({ ...form, [name]: value });
   };
@@ -31,7 +35,6 @@ const AuthPage = () => {
   const loginHandler = async () => {
     try {
       const data = await request("api/auth/login", "POST", { ...form });
-      console.log(data);
       auth.login(data.token, data.userId);
     } catch {}
   };
@@ -50,6 +53,7 @@ const AuthPage = () => {
                   id="email"
                   type="text"
                   name="email"
+                  value={form.email}
                   onChange={changeHandler}
                 />
                 <label htmlFor="email">Email</label>
@@ -60,6 +64,7 @@ const AuthPage = () => {
                   id="password"
                   type="password"
                   name="password"
+                  value={form.password}
                   onChange={changeHandler}
                 />
                 <label htmlFor="password">Password</label>
